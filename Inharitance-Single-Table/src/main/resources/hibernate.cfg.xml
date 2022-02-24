@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!--Connection settings => here hibernate. is optional we can remove it also-->
+
+        <property name="hinernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernatedemo</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <!--SQL Dialect => Dialect class is used for generating query so it's important to mention it-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <!--
+            create => create new schema everytime application run.
+            update => update the schema if it is present or create if it is not present
+            validate => when we create the schema direct in database it will validate it with classes
+            create-drop => only for testing purpose it will create and drop schema as soon as application shutdown
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!--These two properties need not to be true in production environment-->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+    </session-factory>
+</hibernate-configuration>
